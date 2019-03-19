@@ -5,6 +5,8 @@ const client = new Client({
     ssl: true
 });
 
+client.connect();
+
 const getUsers = (request, response) => {
     client.query(
         "SELECT * FROM users ORDER BY id ASC", 
