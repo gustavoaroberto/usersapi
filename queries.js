@@ -1,15 +1,12 @@
-const Pool = require("pg").Pool;
+const { Client } = require("pg");
 
-const pool = new Pool({
-    user: "me",
-    host: "localhost",
-    database: "api",
-    password: "aaa43610079",
-    port: 5432
+const client = new Client({
+    connectionString: process.env.DATABASE_URL,
+    ssl: true
 });
 
 const getUsers = (request, response) => {
-    pool.query(
+    client.query(
         "SELECT * FROM users ORDER BY id ASC", 
         (error, results) => {
             if(error) {
@@ -22,7 +19,7 @@ const getUsers = (request, response) => {
 const getUserById = (request, response) => {
     const id = parseInt(request.params.id);
 
-    pool.query(
+    client.query(
         "SELECT * FROM users WHERE id = $1",
         [id], 
         (error, results) => {
@@ -36,7 +33,7 @@ const getUserById = (request, response) => {
 const createUser = (request, response) => {
     const { name, email } = request.body;
 
-    pool.query(
+    client.query(
         "INSERT INTO users (name, email) VALUES ($1, $2)", 
         [name, email], 
         (error, results) => {
@@ -51,7 +48,7 @@ const updateUser = (request, response) => {
     const id = parseInt(request.params.id);
     const { name, email } = request.body;
 
-    pool.query(
+    client.query(
         "UPDATE users SET name = $1, email = $2 WHERE id = $3",
         [name, email, id],
         (error, results) => {
@@ -66,7 +63,7 @@ const updateUser = (request, response) => {
 const deleteUser = (request, response) => {
     const id = parseInt(request.params.id);
 
-    pool.query(
+    client.query(
         "DELETE FROM users WHERE id = $1",
         [id],
         (error, results) => {

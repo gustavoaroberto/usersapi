@@ -3,13 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "npm install --production"
-  },
   "engines": {
-    "node": "10.15.3",
-    "npm": "6.9.0"
+    "node": "10.x"
+  },
+  "scripts": {
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",

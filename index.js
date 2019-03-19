@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
-const port = 3030;
+const PORT = process.env.PORT || 5000
 
 const db = require("./queries");
 
@@ -22,6 +22,6 @@ app.post("/users", db.createUser);
 app.put("/users/:id", db.updateUser);
 app.delete("/users/:id", db.deleteUser);
 
-app.listen(port, () => {
-    console.log(`App running on port ${port}`);
+app.listen(PORT, () => {
+    console.log(`App running on port ${PORT}`);
 });
