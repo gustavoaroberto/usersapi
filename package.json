@@ -1,0 +1,21 @@
+{
+  "name": "node-api-postgres",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "heroku-postbuild": "npm install --production"
+  },
+  "engines": {
+    "node": "10.15.3",
+    "npm": "6.9.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "pg": "^7.9.0"
+  }
+}
